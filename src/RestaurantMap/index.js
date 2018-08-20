@@ -1,28 +1,48 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import Marker from '../Marker'
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import './index.css';
 
-class RestaurantMap extends Component {
-  constructor() {
+class RestaurantMap extends Component{
+  // Create state that stores the restaurants as an array
+  constructor(){
     super();
     this.state = {
+      restaurants: []
+    }
+  }
+  findRestaurants = async (evt) => {
+    try{
+
+      const foundRestaurants = await fetch('https://www.google.com/maps/search/?api=1&query' + + '/search');
+      this.setState({restaurants: foundRestaurants});
+      // console.log(this.state, ' this is this.state in RestaurantMap and the findRestaurants function');
+      return this.state;
+    }catch(err){
+      console.log(err, ' this is an error in the RestaurantMap findRestaurants function');
     }
   }
 
-  render() {
-    return (
-      <div style={{ height: '100vh', width: '100%' }}>
-        <h1>RestaurantMap Page</h1>
-        <GoogleMapReact defaultCenter={this.props.center} defaultZoom={this.props.zoom}>
-          <GoogleMapReact lat={59.955413} lng={30.337844} text={'Kreyser Avrora'}/>
+  render(){
+    console.log(this.state.restaurants, " this is this.state in RestaurantMap");
+    // this.findRestaurants()
+    return(
+      <div >
 
-        </GoogleMapReact>
+        <Map google={this.props.google} zoom={14}>
 
+         <Marker onClick={this.onMarkerClick}
+                 name={'Current location'} />
+
+         <InfoWindow onClose={this.onInfoWindowClose}>
+
+         </InfoWindow>
+        </Map>
       </div>
-    )
+    );
   }
 }
-// const Marker = props => {
-//   return <div className="SuperAwesomePin"></div>
-// }
-export default RestaurantMap;
+
+export default GoogleApiWrapper({
+  apiKey: ('AIzaSyCoCFcifF1jJDfzgyrb-rMQckpMcmSo12Q')
+})(RestaurantMap)

@@ -5,7 +5,6 @@ import Header from './Header/';
 import HomeContainer from "./HomeContainer/HomeContainer.js";
 import Login from './Login';
 import Footer from './Footer';
-import GoogleMapReact from 'google-map-react';
 
 
 

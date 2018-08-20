@@ -7,6 +7,7 @@ const Footer = () => {
     <div className="container">
     <footer className='footer'>
     <h6> App Footer </h6>
+    
       <div className="copyright">
         <p>Copyright 2018</p>
       </div>
