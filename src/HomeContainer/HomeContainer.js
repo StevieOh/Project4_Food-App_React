@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import RestaurantMap from '../RestaurantMap';
 
 class HomeContainer extends Component {
   constructor() {
@@ -11,7 +12,9 @@ class HomeContainer extends Component {
   render() {
     return (
       <div>
-        <h1>Home Page</h1>
+        <h1>HomeContainer Page</h1>
+        <RestaurantMap />
+
       </div>
     )
   }
