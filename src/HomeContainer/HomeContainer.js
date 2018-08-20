@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import RestaurantMap from '../RestaurantMap';
-import RestaurantList from '../RestaurantList'
+import RestaurantsList from '../RestaurantsList'
 import Search from '../Search'
 import SearchContainer from '../SearchContainer'
 class HomeContainer extends Component {
@@ -56,9 +56,9 @@ class HomeContainer extends Component {
 
         <RestaurantMap google={this.props.google} markers={this.state.markers}/>
         <div className="restaurantContainer">
-        { this.state.restaurantsFetch ? this.state.restaurants.map((restaurant, i) => <RestaurantList keys={i} restaurant={this.state.restaurants}/>) : <Search handleSubmit={this.handleSubmit} /> }
+        { this.state.restaurantsFetch ? this.state.restaurants.map((restaurant, i) => <RestaurantsList keys={i} restaurant={this.state.restaurants}/>) : <Search handleSubmit={this.handleSubmit} /> }
         <h1>List of restaurants in your area</h1>
-        <RestaurantList restaurants={this.state.restaurants}/>
+        <RestaurantsList restaurants={this.state.restaurants}/>
       </div>
 
 
