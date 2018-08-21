@@ -15,11 +15,12 @@ const Markers = (props) => {
       initialLatitude = latitude;
       initialLongitude = longitude;
     }
-    return <Marker key={index} position={{lat: latitude, lng: longitude}} icon={{
+    return <Marker key={index} label={name} position={{lat: latitude, lng: longitude}} title={name} icon={{
       url: "https://thumbs.gfycat.com/WellgroomedSeveralFrigatebird-size_restricted.gif",
       anchor: new props.google.maps.Point(32,32),
       scaledSize: new props.google.maps.Size(64,64)
     }}/>
+         
   });
   console.log(initialLatitude)
   console.log(initialLongitude)
