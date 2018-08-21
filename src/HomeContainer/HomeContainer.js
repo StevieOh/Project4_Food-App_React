@@ -1,63 +1,72 @@
 import React, { Component } from "react";
-import RestaurantMap from '../RestaurantMap';
 import Search from '../Search'
-import SearchContainer from '../SearchContainer'
-
+import MapContainer from '../MapContainer'
 class HomeContainer extends Component {
   constructor() {
     super();
     this.state = {
-      model: [],
       restaurants: [],
-      search: ''
-      // restaurantsFetch: false,
+      searchLocation: '',
+      searchTerm: ''
     }
   }
 
+  handleChange = async (e) => {
+    try {
+      this.setState({[e.currentTarget.name]: e.currentTarget.value});
+    }catch(err){
+      console.log(err, 'error at handleChange')
+    }
+  }
+
+  // cl post request
   handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-          // console.log(searchRestaurant, 'here is restaurants')
-
-      const searchRestaurant = await fetch('GET https://api.yelp.com/v3/autocomplete?text=del&latitude=37.786882&longitude=-122.399972', {
-        method: 'POST',
-        credentials: 'include',
-        body: JSON.stringify(this.state),
-                Authorization : ('a3x1b8b59MxxH8FUk_vCZNco6_UyvcCPxqBonIz6F7zKie57BtlRFFw7CORC0_BQiAgOeXytSl78DX8DXzvPPGwmWIpeHDYBG8DZjr_54Ln7jUnMOC_4Bcdl0LV1W3Yx'),
+    try{
+      const searchResponse = await fetch('http://localhost:8000/api/yelp/businesses/' + this.state.searchLocation + '/' + this.state.searchTerm + '/10', {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json'
         }
       });
-      const parsedResponse = await searchRestaurant.json();
-      this.setState({restaurants: [...this.state.restaurants, parsedResponse.restaurants]});
-  //
-    } catch (err){
-      console.log(err, '-login index---->>>>>error inside handleSubmit<<<<-------')
-      }
-  }
 
-  getRestaurants = async() => {
-    try{
-      const restaurants = await fetch('GET https://api.yelp.com/v3/autocomplete?text=del&latitude=37.786882&longitude=-122.399972', {
-          Authorization : ('a3x1b8b59MxxH8FUk_vCZNco6_UyvcCPxqBonIz6F7zKie57BtlRFFw7CORC0_BQiAgOeXytSl78DX8DXzvPPGwmWIpeHDYBG8DZjr_54Ln7jUnMOC_4Bcdl0LV1W3Yx')
-      })
-      const restaurantsJson = await restaurants.json();
-
-      // return restaurantsJson.
-    } catch (err){
-      console.log(err, 'error in catch block getRestaurants')
-      return err
+      const parsedResponse = await searchResponse.json();
+      this.setState({restaurants: parsedResponse.restaurant_list})
+    }catch (err){
+      console.log(err, '----->>> this is the query at SearchContainer')
     }
   }
+
+  getDefaultRestaurants = async (e) => {
+    try{
+      const searchResponse = await fetch('http://localhost:8000/api/yelp/businesses/60607/restaurant/10', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const parsedResponse = await searchResponse.json();
+      const restaurants = await parsedResponse.restaurant_list;
+      return restaurants
+    }catch (err){
+      console.log(err, '----->>> this is the query at SearchContainer')
+    }
+  }
+  componentDidMount = (e) => {
+    this.getDefaultRestaurants().then((data) => this.setState({restaurants: data})); 
+  }
+
+
   render() {
     return (
       <div>
-        <h1>HomeContainer Page</h1>
-        <SearchContainer />
-
-        <RestaurantMap google={this.props.google} markers={this.state.markers}/>
         <div className="restaurantContainer">
-      </div>
+
+          <h1>HomeContainer Page</h1>
+          <Search handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
+          <MapContainer restaurants={this.state.restaurants} />
+        </div>
 
 
       </div>
