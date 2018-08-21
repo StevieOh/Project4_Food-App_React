@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Search from '../Search'
-import RestaurantsList from '../RestaurantsList'
 class SearchContainer extends Component {
   constructor(){
     super();
@@ -61,7 +60,6 @@ class SearchContainer extends Component {
     return(
       <div>
         <Search handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
-        <RestaurantsList restaurants={this.state.restaurants}/>
 
       </div>
       )

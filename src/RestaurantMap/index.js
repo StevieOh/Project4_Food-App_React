@@ -1,43 +1,31 @@
-import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import './index.css';
-
-class RestaurantMap extends Component{
-  // Create state that stores the restaurants as an array
-  constructor(){
+import React, {Component} from 'react';
+import './index.css'; 
+import { withGoogleMap, GoogleMap } from 'react-google-maps';
+// this will contain profile elements and components
+class RestaurantMap extends Component {
+  constructor() {
     super();
     this.state = {
-      restaurants: []
+
     }
   }
-  findRestaurants = async (e) => {
-    try{
+  
+  render() {
+    const GoogleMapExample = withGoogleMap(props => (
+      <GoogleMap
+        defaultCenter = { { lat: 40.756795, lng: -73.954298 } }
+        defaultZoom = { 13 }
+      >
+      </GoogleMap>
+     ));
+    return (
+      <div>
 
-      const foundRestaurants = await fetch('GET https://api.yelp.com/v3/autocomplete?text=del&latitude=41.881832&longitude=-87.623177');
-      this.setState({restaurants: foundRestaurants});
-      // console.log(this.state, ' this is this.state in RestaurantMap and the findRestaurants function');
-      return this.state;
-    }catch(err){
-      console.log(err, ' this is an error in the RestaurantMap findRestaurants function');
-    }
-  }
-
-  render(){
-    console.log(this.state.restaurants, " this is this.state in RestaurantMap");
-    // this.findRestaurants()
-    return(
-      <div className="locationContainer">
-          <GoogleMapReact
-            freelancerResults={this.props.freelancerResults}
-            containerElement={<div style={{ height: `400px` }} />}
-            mapElement={<div style={{ height: `100%` }} />}
-          />
-        </div>
-    );
+        <h1>RestaurantMap Page</h1>
+        <GoogleMapExample containerElement={ <div style={{ height: `500px`, width: '500px' }} /> }mapElement={ <div style={{ height: `100%` }} /> }/>
+      </div>
+    )
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: ('AIzaSyBpS9m_h_obP2J-O-x3-P2HaEZP1yo7CPU&callback=initMap')
-})(RestaurantMap)
+export default RestaurantMap;
