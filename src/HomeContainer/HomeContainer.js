@@ -19,10 +19,11 @@ class HomeContainer extends Component {
     try {
           // console.log(searchRestaurant, 'here is restaurants')
 
-      const searchRestaurant = await fetch('https://chow-town-back.herokuapp.com/search', {
+      const searchRestaurant = await fetch('GET https://api.yelp.com/v3/autocomplete?text=del&latitude=37.786882&longitude=-122.399972', {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify(this.state),
+                Authorization : ('a3x1b8b59MxxH8FUk_vCZNco6_UyvcCPxqBonIz6F7zKie57BtlRFFw7CORC0_BQiAgOeXytSl78DX8DXzvPPGwmWIpeHDYBG8DZjr_54Ln7jUnMOC_4Bcdl0LV1W3Yx'),
         headers: {
           'Content-Type': 'application/json'
         }
@@ -37,8 +38,8 @@ class HomeContainer extends Component {
 
   getRestaurants = async() => {
     try{
-      const restaurants = await fetch('https://chow-town-back.herokuapp.com/search', {
-
+      const restaurants = await fetch('GET https://api.yelp.com/v3/autocomplete?text=del&latitude=37.786882&longitude=-122.399972', {
+          Authorization : ('a3x1b8b59MxxH8FUk_vCZNco6_UyvcCPxqBonIz6F7zKie57BtlRFFw7CORC0_BQiAgOeXytSl78DX8DXzvPPGwmWIpeHDYBG8DZjr_54Ln7jUnMOC_4Bcdl0LV1W3Yx')
       })
       const restaurantsJson = await restaurants.json();
 

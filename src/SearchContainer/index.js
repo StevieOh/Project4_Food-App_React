@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Search from '../Search'
 import RestaurantsList from '../RestaurantsList'
-const FETCH_URL = 'http://localhost:9000'
 class SearchContainer extends Component {
   constructor(){
     super();
@@ -27,7 +26,7 @@ class SearchContainer extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     try{
-      const searchResponse = await fetch(FETCH_URL + "/search", {
+      const searchResponse = await fetch('https://developers.zomato.com/api/v2.1/locations?query=' + "/search", {
         method: 'POST',
         body: JSON.stringify(this.state),
         headers: {
@@ -48,7 +47,7 @@ class SearchContainer extends Component {
 
   showModal = async (id) => {
     try{
-      const showRestaurant = await fetch(FETCH_URL + "/search/" + this.state.restaurants.res_id, {
+      const showRestaurant = await fetch('https://api.yelp.com/v3/businesses/{id}' + "/search/" + this.state.restaurants.res_id, {
         method: 'GET',
         credentials: 'inlcude'
       })

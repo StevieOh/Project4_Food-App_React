@@ -14,7 +14,7 @@ class RestaurantMap extends Component{
   findRestaurants = async (evt) => {
     try{
 
-      const foundRestaurants = await fetch('https://www.google.com/maps/search/?api=1&query' + + '/search');
+      const foundRestaurants = await fetch('GET https://api.yelp.com/v3/autocomplete?text=del&latitude=41.881832&longitude=-87.623177');
       this.setState({restaurants: foundRestaurants});
       // console.log(this.state, ' this is this.state in RestaurantMap and the findRestaurants function');
       return this.state;
@@ -44,5 +44,5 @@ class RestaurantMap extends Component{
 }
 
 export default GoogleApiWrapper({
-  apiKey: ('AIzaSyCoCFcifF1jJDfzgyrb-rMQckpMcmSo12Q')
+  apiKey: ('AIzaSyBpS9m_h_obP2J-O-x3-P2HaEZP1yo7CPU&callback=initMap')
 })(RestaurantMap)
