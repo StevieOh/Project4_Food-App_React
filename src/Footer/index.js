@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     // <h6> App Footer </h6>
   return (
-    <div class="footercontainer">
-    <footer class="footer">
+
+    <div className="container">
+    <footer className="footer">
+
     
       <div className="copyright">
         <p>Copyright 2018</p>

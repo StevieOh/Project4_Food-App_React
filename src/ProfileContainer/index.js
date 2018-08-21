@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-
-class Profile extends Component {
+// this will contain profile elements and components
+class ProfileContainer extends Component {
   constructor() {
     super();
     this.state = {
@@ -18,4 +18,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default ProfileContainer;

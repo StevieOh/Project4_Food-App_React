@@ -8,15 +8,14 @@ import Footer from './Footer';
 
 
 
-
-
 class App extends Component {
   constructor(){
     super();
 
     this.state = {
       logged: false,
-      username: ''
+      username: '',
+      location: ''
     }
   }
   login = (username) => {
@@ -29,12 +28,14 @@ class App extends Component {
       logged: true
     });
   }
+
+
+
   render() {
     return (
       <div className="App">
         <Header className="App-header"/>
-        {this.state.logged ? <HomeContainer username={this.state.username} /> : <Login login={this.login}/>}
-
+        {this.state.logged ? <HomeContainer username={this.state.username}  /> : <Login login={this.login}/>}
         <Footer className="App-footer"/>
       </div>
     );
