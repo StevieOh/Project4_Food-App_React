@@ -1,32 +1,26 @@
-// import React, { Component } from 'react';
-// import GoogleMapReact from 'google-map-react';
-// import './index.css'
+import React, { Component } from 'react';
+import GoogleMapReact from 'google-map-react';
+import './index.css'
 
-// // const AnyReactComponent = ({ text }) => <div>{text}</div>;
+// const AnyReactComponent = ({ text }) => <div>{text}</div>;
  
-// class GoogleMapReact extends Component {
-//   static defaultProps = {
-//     center: {
-//       lat: 59.95,
-//       lng: 30.33
-//     },
-//     zoom: 11
-//   };
- 
-//   render() {
-//     return (
-//       // Important! Always set the container height explicitly
-//       <div style={{ height: '100vh', width: '100%' }}>
-//         <GoogleMapReact
-//           // bootstrapURLKeys={{ key: /* YOUR KEY HERE */ }}
-//           defaultCenter={this.props.center}
-//           defaultZoom={this.props.zoom}
-//         >
+import React from 'react';
+import {withGoogleMap, GoogleMap, Marker} from 'react-google-maps';
 
-//         </GoogleMapReact>
-//       </div>
-//     );
-//   }
-// }
- 
-// export default GoogleMapReact;
+
+
+const MapContainer = (withGoogleMap((props) =>
+  // map over props.freelancerResults to create an array of <Marker />s
+  // include that below where you currently have just the one marker
+  <GoogleMap
+    center= {{lat:41.881832, lng: -87.623177}}
+    zoom= {10}
+  >
+
+      <Marker position={{lat:41.881832, lng: -87.623177}}/>
+
+  </GoogleMap>
+
+))
+
+export default MapContainer;

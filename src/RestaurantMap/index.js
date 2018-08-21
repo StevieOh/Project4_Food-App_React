@@ -11,7 +11,7 @@ class RestaurantMap extends Component{
       restaurants: []
     }
   }
-  findRestaurants = async (evt) => {
+  findRestaurants = async (e) => {
     try{
 
       const foundRestaurants = await fetch('https://www.google.com/maps/search/?api=1&query' + + '/search');
@@ -27,18 +27,13 @@ class RestaurantMap extends Component{
     console.log(this.state.restaurants, " this is this.state in RestaurantMap");
     // this.findRestaurants()
     return(
-      <div >
-
-        <Map google={this.props.google} zoom={14}>
-
-         <Marker onClick={this.onMarkerClick}
-                 name={'Current location'} />
-
-         <InfoWindow onClose={this.onInfoWindowClose}>
-
-         </InfoWindow>
-        </Map>
-      </div>
+      <div className="locationContainer">
+          <GoogleMapReact
+            freelancerResults={this.props.freelancerResults}
+            containerElement={<div style={{ height: `400px` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+          />
+        </div>
     );
   }
 }

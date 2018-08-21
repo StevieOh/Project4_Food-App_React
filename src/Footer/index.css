@@ -1,8 +1,15 @@
-body{
+.footer{
   border: 1px solid black;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 .logo{  
   max-width: 100%; 
-
+}
+p{
+  display: inline-flex;
+  margin: 5px;
 }
