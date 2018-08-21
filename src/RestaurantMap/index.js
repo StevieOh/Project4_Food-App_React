@@ -14,7 +14,7 @@ class RestaurantMap extends Component{
   findRestaurants = async (e) => {
     try{
 
-      const foundRestaurants = await fetch('https://www.google.com/maps/search/?api=1&query' + + '/search');
+      const foundRestaurants = await fetch('https://www.google.com/maps/search/?api=1&query');
       this.setState({restaurants: foundRestaurants});
       // console.log(this.state, ' this is this.state in RestaurantMap and the findRestaurants function');
       return this.state;

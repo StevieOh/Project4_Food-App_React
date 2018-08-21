@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     // <h6> App Footer </h6>
   return (
-    <div class="container">
+    <div class="footercontainer">
     <footer class="footer">
     
       <div className="copyright">
