@@ -43,6 +43,7 @@ class HomeContainer extends Component {
   render() {
     return (
       <div>
+
         <div className="restaurantContainer">
 
           <h1>HomeContainer Page</h1>
