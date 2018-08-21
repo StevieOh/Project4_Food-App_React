@@ -3,10 +3,10 @@ import './index.css'
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+    // <h6> App Footer </h6>
   return (
-    <div className="container">
-    <footer className='footer'>
-    <h6> App Footer </h6>
+    <div class="container">
+    <footer class="footer">
     
       <div className="copyright">
         <p>Copyright 2018</p>
@@ -25,4 +25,4 @@ const Footer = () => {
 export default Footer;
 
 
-// 
+ 
