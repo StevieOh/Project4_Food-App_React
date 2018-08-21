@@ -37,25 +37,7 @@ class HomeContainer extends Component {
     }
   }
 
-  getDefaultRestaurants = async (e) => {
-    try{
-      const searchResponse = await fetch('http://localhost:8000/api/yelp/businesses/60607/restaurant/10', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-
-      const parsedResponse = await searchResponse.json();
-      const restaurants = await parsedResponse.restaurant_list;
-      return restaurants
-    }catch (err){
-      console.log(err, '----->>> this is the query at SearchContainer')
-    }
-  }
-  componentDidMount = (e) => {
-    this.getDefaultRestaurants().then((data) => this.setState({restaurants: data})); 
-  }
+  
 
 
   render() {

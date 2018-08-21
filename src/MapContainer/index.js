@@ -33,6 +33,12 @@ class MapContainer extends Component {
     this.getDefaultRestaurants().then((data) => this.setState({restaurants: data}));
   }
 
+  componentWillReceiveProps(nextProps){
+    if(this.props.restaurants !== nextProps.restaurants){
+      this.setState({restaurants: nextProps.restaurants})
+    }
+  }
+
   render() {
     return (
       <div>

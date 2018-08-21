@@ -24,7 +24,7 @@ const Markers = (props) => {
   console.log(initialLatitude)
   console.log(initialLongitude)
   return(
-    <Map google={props.google} style={{width: "400px", height: "400px", position: "relative"}} initialCenter={{lat: initialLatitude, lng: initialLongitude}}>
+    <Map google={props.google} style={{width: "400px", height: "400px", position: "relative"}} zoom={13} center={{lat: initialLatitude, lng: initialLongitude}} initialCenter={{lat: initialLatitude, lng: initialLongitude}}>
     { markers }
     </Map>
   );
