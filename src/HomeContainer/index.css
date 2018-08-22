@@ -1,5 +1,18 @@
 body{
-  border: 5px solid red;
   display: flex;
   align-self: center;
+  margin: 10px;
+}
+
+h1{
+  
+  display: flex;
+  justify-content: center;
+}
+
+.restaurantContainer{
+  
+  text-align: center;
+  margin: 20px;
+  /*display: flex;*/
 }
