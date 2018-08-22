@@ -40,9 +40,8 @@ class App extends Component {
     });
   }
 
-
-
   render() {
+    console.log(this.state.username);
     return (
       <div className="App">
       <Header className="App-header"/>
@@ -61,5 +60,3 @@ class App extends Component {
 }
 
 export default App;
-
-
