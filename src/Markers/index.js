@@ -7,7 +7,7 @@ const Markers = (props) => {
   let initialLongitude = "";
 
   const markers = props.restaurants.map((restaurant, index) => {
-
+    const id = restaurant.id
     const name = restaurant.name;
     const latitude = restaurant.coordinates.latitude;
     const longitude = restaurant.coordinates.longitude;
@@ -15,6 +15,7 @@ const Markers = (props) => {
       initialLatitude = latitude;
       initialLongitude = longitude;
     }
+
     return <Marker 
       key={index} 
       position={{lat: latitude, lng: longitude}} 
@@ -23,6 +24,7 @@ const Markers = (props) => {
         anchor: new props.google.maps.Point(32,32),
         scaledSize: new props.google.maps.Size(64,64)
       }}/>
+
   });
   console.log(initialLatitude)
   console.log(initialLongitude)
@@ -42,4 +44,3 @@ const Markers = (props) => {
 
 
 export default Markers;
-

@@ -44,9 +44,11 @@ class MapContainer extends Component {
     return (
       <div className="mapContainer">
         <h1>MapContainer Page</h1>
-        {this.state.restaurants.length > 0 ? <Markers google={this.props.google} restaurants={this.state.restaurants}/> : null}
-
-        
+        <div style={{display: "flex", justifyContent: "center"}}>
+          <div style={{height: "400px", width: "400px"}}>
+            {this.state.restaurants.length > 0 ? <Markers google={this.props.google} restaurants={this.state.restaurants}/> : null}
+          </div>
+        </div>
       </div>
     )
   }

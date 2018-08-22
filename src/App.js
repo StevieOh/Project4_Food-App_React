@@ -5,8 +5,19 @@ import Header from './Header/';
 import HomeContainer from "./HomeContainer/HomeContainer.js";
 import Login from './Login';
 import Footer from './Footer';
+import ProfileContainer from './ProfileContainer';
+import FriendContainer from './FriendContainer';
+import RestaurantShow from './RestaurantShow';
 
+import { Route, Switch } from "react-router-dom";
+const My404 = () => {
+  return(
+    <div>
+      You Get Your Damn Hands Off Her.. Bifff
+    </div>
 
+    )
+}
 
 class App extends Component {
   constructor(){
@@ -29,13 +40,19 @@ class App extends Component {
     });
   }
 
-
-
   render() {
+    console.log(this.state.username);
     return (
       <div className="App">
-        <Header className="App-header"/>
-        {this.state.logged ? <HomeContainer username={this.state.username}  /> : <Login login={this.login}/>}
+      <Header className="App-header"/>
+
+        <Switch>
+        <Route exact path='/' component={ HomeContainer } />
+        <Route exact path='/profile' component={ ProfileContainer } />
+        <Route exact path='/restaurant' component={ RestaurantShow } />
+        {this.state.logged ? <HomeContainer username={this.state.username}  /> : <Login login={this.login}/>} } />
+        <Route component={ My404 }/>
+        </Switch>
         <Footer className="App-footer"/>
       </div>
     );
