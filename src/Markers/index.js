@@ -18,8 +18,11 @@ const Markers = (props) => {
 
     return <Marker 
       key={index} 
+      label={name} 
+      id={id} 
+      onClick={() => window.location = 'restaurant/' + id} 
       position={{lat: latitude, lng: longitude}} 
-      icon={{
+      title={name} icon={{
         url: "https://thumbs.gfycat.com/WellgroomedSeveralFrigatebird-size_restricted.gif",
         anchor: new props.google.maps.Point(32,32),
         scaledSize: new props.google.maps.Size(64,64)
