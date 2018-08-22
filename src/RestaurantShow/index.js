@@ -10,7 +10,6 @@ class RestaurantShow extends Component {
   getRestaurant = async () => {
     try{
       const id = await this.props.match.params.id;
-      console.log(id);
       const searchResponse = await fetch('http://localhost:8000/api/yelp/businesses/' + id, {
         method: 'GET',
         headers: {
@@ -29,7 +28,6 @@ class RestaurantShow extends Component {
     this.getRestaurant().then((data) => this.setState({restaurant: data}));
   }
   render() {
-    console.log("rendered");
     return (
       <div>
         <h1>Restaurant Show Page</h1>
