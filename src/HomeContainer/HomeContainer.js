@@ -13,6 +13,36 @@ class HomeContainer extends Component {
     }
   }
 
+  getDefaultRestaurants = async (e) => {
+    try{
+      const searchIPAddress = await fetch('http://localhost:8000/api/ip/', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const parsedIPAddress = await searchIPAddress.json();
+      const zip = await parsedIPAddress.ip_address.zip
+
+      const searchResponse = await fetch('http://localhost:8000/api/yelp/businesses/' + zip + '/restaurant/10', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const parsedResponse = await searchResponse.json();
+      const restaurants = await parsedResponse.restaurant_list;
+      return restaurants
+    }catch (err){
+      console.log(err, '----->>> this is the query at SearchContainer')
+    }
+  }
+  componentDidMount = (e) => {
+    this.getDefaultRestaurants().then((data) => this.setState({restaurants: data}));
+  }
+
   handleChange = async (e) => {
     try {
       this.setState({[e.currentTarget.name]: e.currentTarget.value});
@@ -39,9 +69,6 @@ class HomeContainer extends Component {
     }
   }
 
-  
-
-
   render() {
     return (
       <div>
@@ -49,10 +76,10 @@ class HomeContainer extends Component {
         <div className="restaurantContainer">
 
           <h1>HomeContainer Page</h1>
-          <Search 
-            className="search" 
-            handleSubmit={this.handleSubmit} 
-            handleChange={this.handleChange} 
+          <Search
+            className="search"
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange}
           />
           <MapContainer restaurants={this.state.restaurants} />
         </div>

@@ -9,7 +9,7 @@ const Footer = () => {
     <div className="container">
     <footer className="footer">
 
-    
+
       <div className="copyright">
         <p>Copyright 2018</p>
       </div>
@@ -19,12 +19,9 @@ const Footer = () => {
         <p><a href="#">About</a></p>
         <p><a href="mailto:#" >Contact</a></p>
       </div>
-    </footer> 
+    </footer>
     </div>
     )
 }
 
 export default Footer;
-
-
- 

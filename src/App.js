@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Header from './Header/';
 import HomeContainer from "./HomeContainer/HomeContainer.js";
@@ -41,7 +40,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.username);
     return (
       <div className="App">
       <Header className="App-header"/>

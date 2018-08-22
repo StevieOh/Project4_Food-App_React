@@ -2,4 +2,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.restaurant-image {
+  max-height: 300px;
+  max-width: 300px;
 }

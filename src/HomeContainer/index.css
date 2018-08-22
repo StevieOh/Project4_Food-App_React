@@ -1,17 +1,18 @@
 body{
   display: flex;
   align-self: center;
+  justify-content: center;
   margin: 10px;
 }
 
-h1{
-  
+h1, h2, h3, h4, h5, h6, p {
+
   display: flex;
   justify-content: center;
 }
 
 .restaurantContainer{
-  
+
   text-align: center;
   margin: 20px;
   /*display: flex;*/

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Markers from "../Markers/index.js";
+import MapContainer from "../MapContainer/index.js";
 
 class RestaurantShow extends Component {
   constructor() {
@@ -32,9 +32,15 @@ class RestaurantShow extends Component {
     console.log(this.state.restaurants);
     return (
       <div>
-        <h1>Restaurant Show Page</h1>
-          {this.state.restaurants.length > 0 ? <Markers google={this.props.google} restaurants={this.state.restaurants}/> : null}
-          {this.state.restaurants.length > 0 ? <p>Name: {this.state.restaurants.name}</p> : null}
+        {this.state.restaurants.length > 0 ?  <h1>{this.state.restaurants[0].name}</h1> : null}
+        {this.state.restaurants.length > 0 ?  <h3>{this.state.restaurants[0].price}</h3> : null}
+        {this.state.restaurants.length > 0 ?  <h3>Rating: {this.state.restaurants[0].rating}</h3> : null}
+
+          {this.state.restaurants.length > 0 ? <MapContainer restaurants={this.state.restaurants} /> : null}
+
+          {this.state.restaurants.length > 0 ? <h3>Phone Number: {this.state.restaurants[0].phone}</h3> : null}
+          {this.state.restaurants.length > 0 ? <h3>Address: {this.state.restaurants[0].location.address1} {this.state.restaurants[0].location.city}, {this.state.restaurants[0].location.state} {this.state.restaurants[0].zip_code}</h3> : null}
+          {this.state.restaurants.length > 0 ? <img src={this.state.restaurants[0].image_url} className="restaurant-image"/> : null}
       </div>
     )
   }
