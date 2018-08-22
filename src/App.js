@@ -49,7 +49,7 @@ class App extends Component {
         <Switch>
         <Route exact path='/' component={ HomeContainer } />
         <Route exact path='/profile' component={ ProfileContainer } />
-        <Route exact path='/restaurant' component={ RestaurantShow } />
+        <Route exact path='/restaurant/:id' component={ RestaurantShow } />
         {this.state.logged ? <HomeContainer username={this.state.username}  /> : <Login login={this.login}/>} } />
         <Route component={ My404 }/>
         </Switch>

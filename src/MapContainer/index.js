@@ -15,7 +15,17 @@ class MapContainer extends Component {
   }
   getDefaultRestaurants = async (e) => {
     try{
-      const searchResponse = await fetch('http://localhost:8000/api/yelp/businesses/60640/restaurant/10', {
+      const searchIPAddress = await fetch('http://localhost:8000/api/ip/', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const parsedIPAddress = await searchIPAddress.json();
+      const zip = await parsedIPAddress.ip_address.zip
+
+      const searchResponse = await fetch('http://localhost:8000/api/yelp/businesses/' + zip + '/restaurant/10', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
