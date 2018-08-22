@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {withGoogleMap, GoogleMap, Marker} from 'react-google-maps';
+import './index.css'
 
 
 
@@ -258,7 +259,10 @@ Map.defaultProps = {
   },
   center: {},
   centerAroundCurrentLocation: false,
-  style: {},
+  style: {
+    height: 50px,
+    width: 50px
+  },
   containerStyle: {},
   visible: true
 };

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Search from '../Search'
 import MapContainer from '../MapContainer'
+import './index.css'
+
 class HomeContainer extends Component {
   constructor() {
     super();

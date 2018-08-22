@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { GoogleApiWrapper } from "google-maps-react";
 import Markers from '../Markers'
+import './index.css'
 
 const  apiKey = "AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg";
 
@@ -41,7 +42,7 @@ class MapContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="mapContainer">
         <h1>MapContainer Page</h1>
         {this.state.restaurants.length > 0 ? <Markers google={this.props.google} restaurants={this.state.restaurants}/> : null}
 

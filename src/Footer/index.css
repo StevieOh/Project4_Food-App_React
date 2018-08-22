@@ -4,11 +4,10 @@
   left: 0;
   bottom: 0;
   width: 100%;
+  height: auto;
 }
 
-.logo{  
-  max-width: 100%; 
-}
+
 p{
   display: inline-flex;
   margin: 5px;
