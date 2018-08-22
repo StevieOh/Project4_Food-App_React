@@ -19,4 +19,4 @@ class RestaurantShow extends Component {
   }
 }
 
-export default RestarauntShow;
+export default RestaurantShow;

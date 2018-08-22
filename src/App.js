@@ -7,8 +7,9 @@ import Login from './Login';
 import Footer from './Footer';
 import ProfileContainer from './ProfileContainer';
 import FriendContainer from './FriendContainer';
-import { Route, Switch } from "react-router-dom";
+import RestaurantShow from './RestaurantShow';
 
+import { Route, Switch } from "react-router-dom";
 const My404 = () => {
   return(
     <div>
@@ -47,10 +48,9 @@ class App extends Component {
       <Header className="App-header"/>
 
         <Switch>
-        <Route exact path="/login" component={ Login } />
         <Route exact path='/' component={ HomeContainer } />
         <Route exact path='/profile' component={ ProfileContainer } />
-
+        <Route exact path='/restaurant' component={ RestaurantShow } />
         {this.state.logged ? <HomeContainer username={this.state.username}  /> : <Login login={this.login}/>} } />
         <Route component={ My404 }/>
         </Switch>
