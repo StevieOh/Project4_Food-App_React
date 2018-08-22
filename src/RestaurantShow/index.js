@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import Markers from "../Markers/index.js";
 
 class RestaurantShow extends Component {
   constructor() {
     super();
     this.state = {
-      restaurant: ""
+      restaurants: []
     }
   }
   getRestaurant = async () => {
@@ -18,20 +19,22 @@ class RestaurantShow extends Component {
       });
 
       const json = await searchResponse.json();
-      const restaurant = await json.restaurant;
+      const restaurant = await [json.restaurant];
       return restaurant;
     }catch (err){
       console.log(err, '----->>> this is the query at SearchContainer')
     }
   }
   componentDidMount = () => {
-    this.getRestaurant().then((data) => this.setState({restaurant: data}));
+    this.getRestaurant().then((data) => this.setState({restaurants: data}));
   }
   render() {
+    console.log(this.state.restaurants);
     return (
       <div>
         <h1>Restaurant Show Page</h1>
-          {this.state.restaurant != "" ? <p>Name: {this.state.restaurant.name}</p> : null}
+          {this.state.restaurants.length > 0 ? <Markers google={this.props.google} restaurants={this.state.restaurants}/> : null}
+          {this.state.restaurants.length > 0 ? <p>Name: {this.state.restaurants.name}</p> : null}
       </div>
     )
   }
