@@ -15,9 +15,9 @@ const Footer = () => {
       </div>
 
       <div className="footerLinks">
-        <p><a href="#">GitHub</a></p>
+        <p><a href="https://github.com/StevieOh/Project4_Food-App_React">GitHub</a></p>
         <p><a href="#">About</a></p>
-        <p><a href="#">Contact</a></p>
+        <p><a href="mailto:#" >Contact</a></p>
       </div>
     </footer> 
     </div>
