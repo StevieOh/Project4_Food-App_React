@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Search from '../Search'
 import MapContainer from '../MapContainer'
+import './index.css'
+
 class HomeContainer extends Component {
   constructor() {
     super();
@@ -47,7 +49,11 @@ class HomeContainer extends Component {
         <div className="restaurantContainer">
 
           <h1>HomeContainer Page</h1>
-          <Search handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
+          <Search 
+            className="search" 
+            handleSubmit={this.handleSubmit} 
+            handleChange={this.handleChange} 
+          />
           <MapContainer restaurants={this.state.restaurants} />
         </div>
 

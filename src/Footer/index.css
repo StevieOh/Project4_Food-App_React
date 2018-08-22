@@ -1,14 +1,13 @@
 .footer{
   border: 1px solid black;
-  position: fixed;
+  height: auto;
   left: 0;
   bottom: 0;
   width: 100%;
+  text-align: center;
 }
 
-.logo{  
-  max-width: 100%; 
-}
+
 p{
   display: inline-flex;
   margin: 5px;
